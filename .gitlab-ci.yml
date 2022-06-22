@@ -11,17 +11,9 @@ build:
   # before_script:
   #   - apt update && apt -y install make autoconf
   script:
-    - g++ helloworld.cpp -o mybinary
+    - cmake -B build .
+    - cmake --build build
   artifacts:
     paths:
-      - mybinary
-      # depending on your build setup it's most likely a good idea to cache outputs to reduce the build time
-      # cache:
-      #   paths:
-      #     - "*.o"
+      - build/hello
 
-# run tests using the binary built before
-test:
-  stage: test
-  script:
-    - ./runmytests.sh
